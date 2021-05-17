@@ -99,30 +99,22 @@
             }
           }
         }
-        function wordy(input) {
-          if (input <1000){
-          return input +" mm";
-         }  else if ( input < 1000000){
-           return ((input/1000).toFixed(3) + " meters");
-         } else {
-          return ((input/1000000).toFixed(3) + " kilometers");
-         }
-        }
+       
 
         document.getElementById("wordnumber").innerHTML = wordCount;
         var totaldistance = Qdistance + Ddistance + Cdistance + Wdistance;
         document.getElementsByClassName("progress-bar")[0].innerHTML =
           wordy(Qdistance);
         document.getElementsByClassName("progress-bar")[1].style.width =
-          (Ddistance / Qdistance) * 100 + "%";
+          (Ddistance / Qdistance) * 90 + "%";
         document.getElementsByClassName("progress-bar")[1].innerHTML =
           wordy(Ddistance);
         document.getElementsByClassName("progress-bar")[2].style.width =
-          (Cdistance / Qdistance) * 100 + "%";
+          (Cdistance / Qdistance) * 90 + "%";
         document.getElementsByClassName("progress-bar")[2].innerHTML =
           wordy(Cdistance);
           document.getElementsByClassName("progress-bar")[3].style.width =
-          (Wdistance / Qdistance) * 100 + "%";
+          (Wdistance / Qdistance) * 90 + "%";
         document.getElementsByClassName("progress-bar")[3].innerHTML =
           wordy(Wdistance);
         document.getElementById("Qbox").innerHTML =
@@ -144,7 +136,26 @@
       }
 
       function clearButt() {
-        location.reload();
+       // location.reload();
+       document.getElementById("data").value = '';
+       counter();
+       document.getElementsByClassName("progress-bar")[0].style.width =
+       90 + "%";
+       document.getElementsByClassName("progress-bar")[1].style.width =
+          90 + "%";
+        document.getElementsByClassName("progress-bar")[2].style.width =
+        90 + "%";
+        document.getElementsByClassName("progress-bar")[3].style.width =
+          90 + "%";
+      }
+      function wordy(input) {
+        if (input <1000){
+        return input +" mm";
+       }  else if ( input < 1000000){
+         return ((input/1000).toFixed(3) + " meters");
+       } else {
+        return ((input/1000000).toFixed(3) + " kilometers");
+       }
       }
     </script>
   </head>
