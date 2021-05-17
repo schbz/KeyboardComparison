@@ -99,41 +99,48 @@
             }
           }
         }
+        function wordy(input) {
+          if (input <1000){
+          return input +" mm";
+         }  else if ( input < 1000000){
+           return ((input/1000).toFixed(3) + " meters");
+         } else {
+          return ((input/1000000).toFixed(3) + " kilometers");
+         }
+        }
 
         document.getElementById("wordnumber").innerHTML = wordCount;
         var totaldistance = Qdistance + Ddistance + Cdistance + Wdistance;
-        document.getElementsByClassName("progress-bar")[0].style.width =
-          (Qdistance / totaldistance) * 100 + "%";
         document.getElementsByClassName("progress-bar")[0].innerHTML =
-          Qdistance + " mm";
+          wordy(Qdistance);
         document.getElementsByClassName("progress-bar")[1].style.width =
-          (Ddistance / totaldistance) * 100 + "%";
+          (Ddistance / Qdistance) * 100 + "%";
         document.getElementsByClassName("progress-bar")[1].innerHTML =
-          Ddistance + " mm";
+          wordy(Ddistance);
         document.getElementsByClassName("progress-bar")[2].style.width =
-          (Cdistance / totaldistance) * 100 + "%";
+          (Cdistance / Qdistance) * 100 + "%";
         document.getElementsByClassName("progress-bar")[2].innerHTML =
-          Cdistance + " mm";
+          wordy(Cdistance);
           document.getElementsByClassName("progress-bar")[3].style.width =
-          (Wdistance / totaldistance) * 100 + "%";
+          (Wdistance / Qdistance) * 100 + "%";
         document.getElementsByClassName("progress-bar")[3].innerHTML =
-          Wdistance + " mm";
+          wordy(Wdistance);
         document.getElementById("Qbox").innerHTML =
           "Total finger travel distance would be <b>" +
-          (Qdistance / 1000).toFixed(3) +
-          "</b> meters. Ouch!!";
+          (wordy(Qdistance)) +
+          "</b>. Ouch!!";
         document.getElementById("Dbox").innerHTML =
-          "You would save <b>" +
-          ((Qdistance - Ddistance) / 1000).toFixed(3) +
-          "</b> meters using dvorak instead of qwerty.";
+          "You'd save <b>" +
+          (wordy(Qdistance - Ddistance)) +
+          "</b> using Dvorak instead of Qwerty.";
         document.getElementById("Cbox").innerHTML =
-          "You would save <b>" +
-          ((Qdistance - Cdistance) / 1000).toFixed(3) +
-          "</b> meters using Colemak instead of qwerty.";
+          "You'd save <b>" +
+          (wordy(Qdistance - Cdistance)) +
+          "</b> using Colemak instead of Qwerty.";
           document.getElementById("Wbox").innerHTML =
-          "You would save <b>" +
-          ((Qdistance - Wdistance) / 1000).toFixed(3) +
-          "</b> meters using Workman instead of qwerty.";
+          "You'd save <b>" +
+          (wordy(Qdistance - Wdistance)) +
+          "</b> using Workman instead of Qwerty.";
       }
 
       function clearButt() {
@@ -148,7 +155,7 @@
         <div class="row g-5">
           <div class="col-md-4 align-items-center">
             <a href="" class="d-flex text-dark text-decoration-none">
-              <h2 class="mx-auto">
+              <h3 class="mx-auto">
                 Keyboard Layouts
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -162,8 +169,8 @@
                     d="M0 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6zm13 .25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25zM2.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 8.75v-.5A.25.25 0 0 0 2.75 8h-.5zM4 8.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 5 8.75v-.5A.25.25 0 0 0 4.75 8h-.5a.25.25 0 0 0-.25.25zM6.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 7 8.75v-.5A.25.25 0 0 0 6.75 8h-.5zM8 8.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 9 8.75v-.5A.25.25 0 0 0 8.75 8h-.5a.25.25 0 0 0-.25.25zM13.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5zm-3-2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-1.5zm.75 2.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25zM11.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5zM9 6.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5A.25.25 0 0 0 9.75 6h-.5a.25.25 0 0 0-.25.25zM7.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 8 6.75v-.5A.25.25 0 0 0 7.75 6h-.5zM5 6.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 6 6.75v-.5A.25.25 0 0 0 5.75 6h-.5a.25.25 0 0 0-.25.25zM2.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h1.5A.25.25 0 0 0 4 6.75v-.5A.25.25 0 0 0 3.75 6h-1.5zM2 10.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25zM4.25 10a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-5.5z"
                   />
                 </svg>
-                Compared
-              </h2>
+                <u>Compared</u>
+              </h3>
             </a>
           </div>
 
@@ -183,13 +190,13 @@
             class="form-control"
             id="data"
             placeholder="Type or Paste text here..."
-            rows="10"
+            rows="6"
             onkeyup="counter();"
             onkeydown="counter();"
             onmouseout="counter();"
           ></textarea>
           <div class="row g-5">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <span id="charcount">0</span> characters,
               <span id="wordnumber">0</span> words entered.
             </div>
@@ -206,11 +213,11 @@
             </a>
           </div>
           <div class="col-md-10">
-            <div class="progress" style="height: 25px">
+            <div class="progress" style="height: 25px;Background: #FFF">
               <div
                 class="progress-bar bg-danger"
                 role="progressbar"
-                style="width: 30%"
+                style="width: 90%"
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -218,11 +225,11 @@
                 Qwerty
               </div>
             </div>
-            <div class="progress" style="height: 25px">
+            <div class="progress" style="height: 25px;Background: #FFF">
               <div
                 class="progress-bar bg-info"
                 role="progressbar"
-                style="width: 30%"
+                style="width: 90%"
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -230,11 +237,11 @@
                 Dvorak
               </div>
             </div>
-            <div class="progress" style="height: 25px">
+            <div class="progress" style="height: 25px;Background: #FFF">
               <div
                 class="progress-bar bg-success"
                 role="progressbar"
-                style="width: 30%"
+                style="width: 90%"
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -242,11 +249,11 @@
                 Colemak
               </div>
             </div>
-            <div class="progress" style="height: 25px">
+            <div class="progress" style="height: 25px;Background: #FFF">
               <div
                 class="progress-bar bg-warning"
                 role="progressbar"
-                style="width: 30%"
+                style="width: 90%"
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
